@@ -1,1 +1,5 @@
-<%= render(@component, &@content_block)%>
+<% if Rails.application.config.view_component.render_monkey_patch_enabled %>
+  <%= render(@component, &@content_block)%>
+<% else %>
+  <%= render_component(@component, &@content_block)%>
+<% end %>
